@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="right" >
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:onClick="callToPrevious"
+        android:text="@string/button_back" />
+
+    <TextView
+        android:id="@+id/textView_accountType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/textView2"
+        android:text="account_type" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button2"
+        android:text="@string/text_tipeakun"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView_Nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView2"
+        android:text="@string/text_nama"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView_Nama"
+        android:text="@string/text_email" />
+
+    <TextView
+        android:id="@+id/textView_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView_email"
+        android:text="@string/text_nomorhp" />
+
+    <TextView
+        android:id="@+id/textView_saldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView_phone"
+        android:text="@string/text_saldo" />
+
+    <TextView
+        android:id="@+id/profil_nama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView_email"
+        android:layout_toRightOf="@+id/textView_email"
+        android:paddingLeft="10dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/profil_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView_phone"
+        android:layout_alignLeft="@+id/profil_nama"
+        android:paddingLeft="10dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView_saldo"
+        android:layout_alignBottom="@+id/textView_saldo"
+        android:layout_toRightOf="@+id/textView_Nama"
+        android:paddingLeft="10dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/button_histori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView_saldo"
+        android:text="@string/button_edit" 
+        android:onClick="callEdit"/>
+
+    <Button
+        android:id="@+id/button_historitopup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/button_histori"
+        android:text="@string/button_historiTopup" />
+
+    <Button
+        android:id="@+id/button_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/button_historitopup"
+        android:text="@string/button_topup" />
+
+    <EditText
+        android:id="@+id/edit_topup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_new"
+        android:layout_alignBottom="@+id/button_new"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/button_new"
+        android:ems="10"
+        android:hint="@string/hint_topup"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/profil_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView7"
+        android:layout_alignLeft="@+id/textView_accountType"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignParentRight="true"
+        android:gravity="center|left"
+        android:text="@string/title_profil"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>
