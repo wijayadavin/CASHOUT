@@ -62,7 +62,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edit_profil_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -84,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/edit_profil_email"
         android:text="@string/text_nomorhp"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
