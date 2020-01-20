@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">cashout</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="buton_text_admin">Login sebagai Admin</string>
+    <string name="button_text_pembeli">Login sebagai Pembeli</string>
+    <string name="button_text_penjual">Login sebagai Penjual</string>
+    <string name="button_text_logout">Log Out</string>
+    <string name="text_view_akun_admin">AKUN ADMIN</string>
+    <string name="button_akunbaru">TAMBAH AKUN BARU</string>
+    <string name="button_buat">BUAT</string>
+    <string name="title_akunbaru">BUAT AKUN BARU</string>
+    <string name="button_back">BACK</string>
+    <string name="text_tipeakun">Tipe akun: </string>
+    <string name="text_nama">Nama: </string>
+    <string name="text_email">E-mail: </string>
+    <string name="administrators">administrators</string>
+    <string name="text_nomorhp">"Nomor HP : "</string>
+    <string name="title_profil">PROFIL AKUN</string>
+    <string name="text_saldo">Saldo: </string>
+    <string name="button_topup">TOPUP</string>
+    <string name="hint_topup">Masukkan nominal topup</string>
+    <string name="button_histori">CEK HISTORI TRANSAKSI</string>
+    <string name="button_edit">EDIT PROFIL</string>
+    <string name="button_historiTopup">CEK HISTORI TOPUP</string>
+    <string name="button_ubah">UBAH</string>
+    <string name="title_member">AKUN PEMBELI</string>
+    <string name="title_edit">EDIT PROFIL</string>
+    <string name="title_historitopup">RIWAYAT TOPUP</string>
+    <string name="title_tenants">AKUN TOKO</string>
+    <string name="title_payment">MENU PEMBAYARAN</string>
+    <string name="text_namatoko">Nama Toko:</string>
+    <string name="text_jumlah_pembayaran">Masukkan jumlah pembayaran:</string>
+    <string name="button_bayar">BAYAR</string>
+
+</resources>
