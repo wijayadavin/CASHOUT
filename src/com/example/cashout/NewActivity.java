@@ -2,7 +2,6 @@ package com.example.cashout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,8 +17,7 @@ public class NewActivity extends Activity {
 
 	private String TAG = NewActivity.class.getSimpleName();
     private ProgressDialog pDialog;
-    
-    private static String url = "http://apilearningpayment.totopeto.com/administrators";
+    String url = "";
 	TextView accountType;
 	Button bsimpan;
 	EditText ename, eemail, ephone;
@@ -29,26 +27,24 @@ public class NewActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new);
 		oldIntent = getIntent();
+		url = oldIntent.getStringExtra("session_url");
 		ename = (EditText) findViewById(R.id.edit_new_name);
 		eemail = (EditText) findViewById(R.id.edit_new_email);
 		ephone = (EditText) findViewById(R.id.edit_phone);
 		accountType = (TextView) findViewById(R.id.textView_accountType);
 		accountType.setText(oldIntent.getStringExtra("account_type"));
 		bsimpan = (Button) findViewById(R.id.button_buat);
-		bsimpan.setOnClickListener(new View.OnClickListener() {
-			
+		bsimpan.setOnClickListener(new View.OnClickListener() {	
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				new AddContact().execute();
+				new AddNew().execute();
 				finish();
-//				Intent intent = new Intent(NewActivity.this, AdminActivity.class);
-//				startActivity(intent);
 			}
 		});
 	}
 	
-	private class AddContact extends AsyncTask<Void, Void, Void> {
+	private class AddNew extends AsyncTask<Void, Void, Void> {
 		
 		@Override
         protected void onPreExecute() {

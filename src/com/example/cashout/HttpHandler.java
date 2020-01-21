@@ -40,8 +40,37 @@ public class HttpHandler {
         }
         return response;
     }
-    
-    // POST GENERAL
+    // PUT
+    public String makePutRequest(String reqUrl, String params) {
+    	String response = null;
+    	try {
+    		URL url = new URL(reqUrl);
+    		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    		conn.setRequestMethod("PUT");
+    		conn.setRequestProperty("Content-Type", "application/json; utf-8");
+    		conn.setRequestProperty("Accept", "application/json");
+    		conn.setDoOutput(true);
+    		
+    		String jsonInputString = params;
+    		OutputStream os = conn.getOutputStream();
+    		os.write(jsonInputString.getBytes("utf-8"));
+    		os.close();
+    		
+    		// read the response
+    		InputStream in = new BufferedInputStream(conn.getInputStream());
+    		response = convertStreamToString(in);
+    	} catch (MalformedURLException e) {
+            Log.e(TAG, "MalformedURLException: " + e.getMessage());
+        } catch (ProtocolException e) {
+            Log.e(TAG, "ProtocolException: " + e.getMessage());
+        } catch (IOException e) {
+            Log.e(TAG, "IOException: " + e.getMessage());
+        } catch (Exception e) {
+            Log.e(TAG, "Exception: " + e.getMessage());
+        }
+        return response;
+    }
+    // POST
     public String makePostRequest(String reqUrl, String params) {
     	String response = null;
     	try {

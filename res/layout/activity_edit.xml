@@ -73,8 +73,27 @@
         android:layout_below="@+id/edit_profil_nama"
         android:text="@string/text_email" />
 
+    <Button
+        android:id="@+id/button_save_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/button_ubah" />
+
     <EditText
-        android:id="@+id/edit_new_email"
+        android:id="@+id/edit_profil_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/edit_profil_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -87,27 +106,8 @@
         android:id="@+id/textView_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_below="@+id/edit_new_email"
-        android:text="@string/text_nomorhp" />
-
-    <EditText
-        android:id="@+id/edit_profil_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView_phone"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView_phone"
-        android:ems="10"
-        android:inputType="phone" />
-
-    <Button
-        android:id="@+id/button_new_topup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/edit_profil_phone"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:text="@string/button_ubah" />
+        android:text="@string/text_nomorhp" />
 
 </RelativeLayout>
