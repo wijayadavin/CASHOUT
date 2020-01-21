@@ -1,5 +1,5 @@
 # UAS201
-Login as AdminDone:
+Login as Admin | Work Done:
 -Get tenants
 -Get members
 -Get administrators
@@ -12,5 +12,5 @@ Login as AdminDone:
 -Click Listview members redirect to profile menu
 -Click edit in profile menu redirect to edit menu
 
-Login as Admin | On Progress:
+Login as Admin | Work On Progress:
 -Edit account (tenant/admin/members)
