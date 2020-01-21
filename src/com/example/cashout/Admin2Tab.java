@@ -28,7 +28,7 @@ public class Admin2Tab extends Activity {
     private ListView lv;
  
     // URL to get members JSON
-    private static String url = "http://apilearningpayment.totopeto.com/members";
+    private static String url = "http://apilearningpayment.totopeto.com/members/";
  
     ArrayList<HashMap<String, String>> membersList;
 
@@ -45,7 +45,7 @@ public class Admin2Tab extends Activity {
 			Intent intent = new Intent(Admin2Tab.this, ProfilActivity.class);
 			intent.putExtra("name", hm.get("name"));
 			intent.putExtra("email", hm.get("email"));
-			intent.putExtra("phone", hm.get("phone"));
+			intent.putExtra("phone_number", hm.get("phone_number"));
 			intent.putExtra("account_type", "members");
 			intent.putExtra("request_from", "admin");
 			startActivity(intent);
@@ -57,7 +57,7 @@ public class Admin2Tab extends Activity {
 //			@Override
 //			public void onClick(View v) {
 //				// TODO Auto-generated method stub
-//				Intent intent = new Intent(AdminActivity.this, administratorAdd.class);
+//				Intent intent = new Intent(AdminActivity.this, memberAdd.class);
 //				startActivity(intent);
 //			}
 //		});
@@ -98,16 +98,17 @@ public class Admin2Tab extends Activity {
                         
                         String name = c.getString("name");
                         String email = c.getString("email");
+                        String phone_number = c.getString("phone_number");
                         
-                        // tmp hash map for single administrator
-                        HashMap<String, String> administrator = new HashMap<String, String>();
+                        // tmp hash map for single member
+                        HashMap<String, String> member = new HashMap<String, String>();
  
                         // adding each child node to HashMap key => value
-                        administrator.put("name", name);
-                        administrator.put("email", email);
-                        
-                        // adding administrator to administrator list
-                        membersList.add(administrator);
+                        member.put("name", name);
+                        member.put("email", email);
+                        member.put("phone_number", phone_number);                        
+                        // adding member to member list
+                        membersList.add(member);
                     }
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -148,7 +149,7 @@ public class Admin2Tab extends Activity {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     Admin2Tab.this, membersList,
-                    R.layout.list_item, new String[]{"name", "email"}, new int[]{R.id.name, R.id.email});
+                    R.layout.list_item, new String[]{"name", "email","phone_number" }, new int[]{R.id.name, R.id.email, R.id.phone_number});
  
             lv.setAdapter(adapter);
         }
@@ -163,7 +164,7 @@ public class Admin2Tab extends Activity {
     public void callAkunBaru(View v) {
 		inew = new Intent(this, NewActivity.class);
 		inew.putExtra("account_type", "members");
-		inew.putExtra("session_url", "http://apilearningpayment.totopeto.com/members ");
+		inew.putExtra("session_url", "http://apilearningpayment.totopeto.com/members/ ");
 		startActivity(inew);
     }
 	

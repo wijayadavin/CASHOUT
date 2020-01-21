@@ -33,16 +33,6 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/profil_nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView_Nama"
-        android:layout_alignBottom="@+id/textView_Nama"
-        android:layout_toRightOf="@+id/textView_Nama"
-        android:paddingLeft="10dp"
-        android:text="TextView" />
-
-    <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,8 +42,16 @@
         android:text="@string/text_jumlah_pembayaran"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <Button
+        android:id="@+id/button_save_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/button_bayar" />
+
     <EditText
-        android:id="@+id/edit_profil_nama"
+        android:id="@+id/edit_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -65,12 +63,12 @@
         <requestFocus />
     </EditText>
 
-    <Button
-        android:id="@+id/button_save_edit"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_tenant_id"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="@string/button_bayar" />
+        android:layout_above="@+id/textView2"
+        android:layout_toRightOf="@+id/textView_Nama"
+        android:text="TextView" />
 
 </RelativeLayout>

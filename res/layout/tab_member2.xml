@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/list_tab_member2"
         android:layout_width="fill_parent"
         android:layout_height="390dp"
         android:layout_weight="0.52" />

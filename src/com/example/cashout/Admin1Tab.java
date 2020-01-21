@@ -2,11 +2,9 @@ package com.example.cashout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -23,13 +21,14 @@ import android.widget.Toast;
 
 
 public class Admin1Tab extends Activity {
-	Intent inew;
+	Intent inew, oldIntent;
+
 	private String TAG = AdminActivity.class.getSimpleName();
     private ProgressDialog pDialog;
     private ListView lv;
- 
+    
     // URL to get tenants JSON
-    private static String url = "http://apilearningpayment.totopeto.com/tenants";
+    private static String url = "http://apilearningpayment.totopeto.com/tenants/";
  
     ArrayList<HashMap<String, String>> tenantsList;
 
@@ -43,15 +42,18 @@ public class Admin1Tab extends Activity {
 		// TODO Auto-generated method stub
 			HashMap<String, String> hm = tenantsList.get(position);
 			Intent intent = new Intent(Admin1Tab.this, ProfilActivity.class);
+			intent.putExtra("id", hm.get("id"));
 			intent.putExtra("name", hm.get("name"));
 			intent.putExtra("email", hm.get("email"));
-			intent.putExtra("phone", hm.get("phone"));
+			intent.putExtra("phone_number", hm.get("phone_number"));
 			intent.putExtra("account_type", "tenants");
 			intent.putExtra("request_from", "admin");
 			startActivity(intent);
 			}
 		});
         
+        
+
 	}
 	
 	private class Gettenants extends AsyncTask<Void, Void, Void> {
@@ -69,7 +71,6 @@ public class Admin1Tab extends Activity {
         @Override
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
-            
             // Making a request to URL and getting response
             String jsonStr = sh.makeServiceCall(url);
  
@@ -91,14 +92,14 @@ public class Admin1Tab extends Activity {
                         String email = c.getString("email");
                         
                         // tmp hash map for single tenants
-                        HashMap<String, String> administrator = new HashMap<String, String>();
+                        HashMap<String, String> tenant = new HashMap<String, String>();
  
                         // adding each child node to HashMap key => value
-                        administrator.put("name", name);
-                        administrator.put("email", email);
+                        tenant.put("name", name);
+                        tenant.put("email", email);
                         
-                        // adding administrator to administrator list
-                        tenantsList.add(administrator);
+                        // adding tenant to tenant list
+                        tenantsList.add(tenant);
                     }
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -139,7 +140,8 @@ public class Admin1Tab extends Activity {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     Admin1Tab.this, tenantsList,
-                    R.layout.list_item, new String[]{"name", "email"}, new int[]{R.id.name, R.id.email});
+                    R.layout.list_item, new String[]{"name", "email"}, 
+                    new int[]{R.id.name, R.id.email});
  
             lv.setAdapter(adapter);
         }
@@ -154,7 +156,7 @@ public class Admin1Tab extends Activity {
     public void callAkunBaru(View v) {
 		inew = new Intent(this, NewActivity.class);
 		inew.putExtra("account_type", "tenants");
-		inew.putExtra("session_url", "http://apilearningpayment.totopeto.com/tenants");
+		inew.putExtra("session_url", "http://apilearningpayment.totopeto.com/tenants/");
 		startActivity(inew);
     }
 	

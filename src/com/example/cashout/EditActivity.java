@@ -21,17 +21,17 @@ public class EditActivity extends Activity {
 	Button bsimpan;
 	String url="";
 	EditText ename, eemail, ephone;
-	TextView PhoneTextView, accountType;
+	TextView PhoneTextView, accountType,	urlTextView;
 @Override
 protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_edit);
 	oldIntent = getIntent();
-	url = oldIntent.getStringExtra("session_url");
 	//3 data Profil
 	ename = (EditText) findViewById(R.id.edit_profil_nama);
 	eemail = (EditText) findViewById(R.id.edit_profil_email);
 	ephone = (EditText) findViewById(R.id.edit_profil_phone);
+	urlTextView = (TextView) findViewById(R.id.textViewUrl);
 	//TV Phone
 	PhoneTextView = (TextView) findViewById(R.id.textView_phone);
 	//menangkap tipe akun dari halaman sebelumnya
@@ -39,17 +39,19 @@ protected void onCreate(Bundle savedInstanceState) {
 	accountType.setText(oldIntent.getStringExtra("account_type"));
 	//khusus account admin
 	if(accountType.getText().toString().equals("administrators")) {
-
-	}
-	//khusus account members
-	if(accountType.getText().toString().equals("members")) {
+		url = "http://apilearningpayment.totopeto.com/administrators";
 		ephone.setVisibility(View.GONE);
 		PhoneTextView.setVisibility(View.GONE);
 	}
+	//khusus account members
+	if(accountType.getText().toString().equals("members")) {
+		url = "http://apilearningpayment.totopeto.com/members";
+	}
 	//khusus account tenants
 	if(accountType.getText().toString().equals("tenants")) {
-
+		url = "http://apilearningpayment.totopeto.com/tenants";
 	}		
+	urlTextView.setText(url);
 	bsimpan = (Button) findViewById(R.id.button_save_edit);
 	bsimpan.setOnClickListener(new View.OnClickListener() {	
 		@Override
@@ -75,13 +77,14 @@ private class Edit extends AsyncTask<Void, Void, Void> {
     
     @Override
     protected Void doInBackground(Void... arg0) {
+		String id = oldIntent.getStringExtra("id");
         String put_params = null;
         JSONObject params = new JSONObject();
 
         try {
         	params.put("name", ename.getText().toString());
         	params.put("email", eemail.getText().toString());
-        	params.put("phone", ephone.getText().toString());
+        	params.put("phone_number", ephone.getText().toString());
         	put_params = params.toString();
         	
         } catch (JSONException e) {
@@ -89,8 +92,9 @@ private class Edit extends AsyncTask<Void, Void, Void> {
         }
         
         HttpHandler data = new HttpHandler();
-        String jsonStr = data.makePutRequest(url, put_params);
+        String jsonStr = data.makePutRequest(url + id, put_params);
         Log.e(TAG, "Response from url: " + jsonStr);
+
         
         return null;
     }

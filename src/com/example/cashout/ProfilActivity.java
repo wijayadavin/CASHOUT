@@ -79,6 +79,7 @@ public class ProfilActivity extends Activity {
 	public void callEdit(View v) {
 		iEdit = new Intent(this, EditActivity.class);
 		iEdit.putExtra("account_type",oldIntent.getStringExtra("account_type"));
+		iEdit.putExtra("id",oldIntent.getStringExtra("od"));
 		startActivity(iEdit);
 	}
 	public void callToPrevious(View v) {

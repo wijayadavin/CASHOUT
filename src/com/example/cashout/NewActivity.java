@@ -64,7 +64,7 @@ public class NewActivity extends Activity {
             try {
             	params.put("name", ename.getText().toString());
             	params.put("email", eemail.getText().toString());
-            	params.put("phone", ephone.getText().toString());
+            	params.put("phone_number", ephone.getText().toString());
             	params.put("current_balance", "0");
             	post_params = params.toString();
             	

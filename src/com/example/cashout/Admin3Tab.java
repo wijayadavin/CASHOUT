@@ -161,7 +161,7 @@ public class Admin3Tab extends Activity {
     public void callAkunBaru(View v) {
 		inew = new Intent(this, NewActivity.class);
 		inew.putExtra("account_type", "administrators");
-		inew.putExtra("session_url", "http://apilearningpayment.totopeto.com/administrators");
+		inew.putExtra("session_url", "http://apilearningpayment.totopeto.com/administrators/");
 		startActivity(inew);
     }
 	
