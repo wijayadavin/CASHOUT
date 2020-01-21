@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="@string/button_buat" />
+        android:text="@string/button_buat" 
+        android:onClick="call_save"/>
 
     <Button
         android:id="@+id/button2"
@@ -41,7 +42,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
-        android:id="@+id/edit_topup"
+        android:id="@+id/edit_new_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -57,12 +58,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/edit_topup"
+        android:layout_below="@+id/edit_new_name"
         android:text="@string/text_email"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
-        android:id="@+id/edit_profil_email"
+        android:id="@+id/edit_new_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -84,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/edit_profil_email"
+        android:layout_below="@+id/edit_new_email"
         android:text="@string/text_nomorhp"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 

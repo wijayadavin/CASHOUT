@@ -14,6 +14,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -26,44 +28,36 @@ public class Admin1Tab extends Activity {
     private ProgressDialog pDialog;
     private ListView lv;
  
-    // URL to get administrators JSON
-    private static String url = "https://api.myjson.com/bins/187qqq";
+    // URL to get tenants JSON
+    private static String url = "http://apilearningpayment.totopeto.com/tenants";
  
-    ArrayList<HashMap<String, String>> administratorList;
+    ArrayList<HashMap<String, String>> memberList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tab_admin3);
         
-        lv = (ListView) findViewById(R.id.list_admin3);
-//        badd = (Button) findViewById(R.id.btadd);
+        lv = (ListView) findViewById(R.id.list_admin3);        
+        lv.setOnItemClickListener(new OnItemClickListener() {
+			
+		
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		// TODO Auto-generated method stub
+			HashMap<String, String> hm = memberList.get(position);
+			Intent intent = new Intent(Admin1Tab.this, ProfilActivity.class);
+			intent.putExtra("name", hm.get("name"));
+			intent.putExtra("email", hm.get("email"));
+			intent.putExtra("phone", hm.get("phone"));
+			intent.putExtra("account_type", "tenants");
+			intent.putExtra("request_from", "admin");
+			startActivity(intent);
+			}
+		});
         
-//        lv.setOnItemClickListener(new OnItemClickListener() {
-//			
-//			@Override
-//			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//				// TODO Auto-generated method stub
-//				HashMap<String, String> hm = administratorList.get(position);
-//				Intent intent = new Intent(AdminActivity.this, administratorMessages.class);
-//				intent.putExtra("name", hm.get("name"));
-//				intent.putExtra("email", hm.get("email"));
-//				startActivity(intent);
-//			}
-//		});
-//        
-//        badd.setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				Intent intent = new Intent(AdminActivity.this, administratorAdd.class);
-//				startActivity(intent);
-//			}
-//		});
 	}
 	
-	private class Getadministrators extends AsyncTask<Void, Void, Void> {
+	private class Gettenants extends AsyncTask<Void, Void, Void> {
    	 
         @Override
         protected void onPreExecute() {
@@ -90,16 +84,16 @@ public class Admin1Tab extends Activity {
                     JSONObject jsonObj = new JSONObject(jsonStr);
  
                     // Getting JSON Array node
-                    JSONArray administrators = jsonObj.getJSONArray("administrators");
+                    JSONArray tenants = jsonObj.getJSONArray("tenants");
  
-                    // looping through All administrators
-                    for (int i = 0; i < administrators.length(); i++) {
-                        JSONObject c = administrators.getJSONObject(i);
+                    // looping through All tenants
+                    for (int i = 0; i < tenants.length(); i++) {
+                        JSONObject c = tenants.getJSONObject(i);
                         
                         String name = c.getString("name");
                         String email = c.getString("email");
                         
-                        // tmp hash map for single administrator
+                        // tmp hash map for single tenants
                         HashMap<String, String> administrator = new HashMap<String, String>();
  
                         // adding each child node to HashMap key => value
@@ -107,7 +101,7 @@ public class Admin1Tab extends Activity {
                         administrator.put("email", email);
                         
                         // adding administrator to administrator list
-                        administratorList.add(administrator);
+                        memberList.add(administrator);
                     }
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -147,7 +141,7 @@ public class Admin1Tab extends Activity {
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    Admin1Tab.this, administratorList,
+                    Admin1Tab.this, memberList,
                     R.layout.list_item, new String[]{"name", "email"}, new int[]{R.id.name, R.id.email});
  
             lv.setAdapter(adapter);
@@ -157,12 +151,13 @@ public class Admin1Tab extends Activity {
     @Override
     public void onResume() {
     	super.onResume();
-    	administratorList = new ArrayList<HashMap<String, String>>();
-    	new Getadministrators().execute();
+    	memberList = new ArrayList<HashMap<String, String>>();
+    	new Gettenants().execute();
     }
     public void callAkunBaru(View v) {
-		inew = new Intent(this, EditActivity.class);
+		inew = new Intent(this, NewActivity.class);
 		inew.putExtra("account_type", "tenants");
+		inew.putExtra("session_url", "http://apilearningpayment.totopeto.com/tenants");
 		startActivity(inew);
     }
 	

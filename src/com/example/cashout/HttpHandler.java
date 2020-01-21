@@ -41,7 +41,7 @@ public class HttpHandler {
         return response;
     }
     
-    // POST
+    // POST GENERAL
     public String makePostRequest(String reqUrl, String params) {
     	String response = null;
     	try {
@@ -71,6 +71,7 @@ public class HttpHandler {
         }
         return response;
     }
+   
  
     private String convertStreamToString(InputStream is) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));

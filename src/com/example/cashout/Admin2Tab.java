@@ -25,8 +25,8 @@ public class Admin2Tab extends Activity {
     private ProgressDialog pDialog;
     private ListView lv;
  
-    // URL to get administrators JSON
-    private static String url = "https://api.myjson.com/bins/187qqq";
+    // URL to get members JSON
+    private static String url = "http://apilearningpayment.totopeto.com/members";
  
     ArrayList<HashMap<String, String>> administratorList;
 
@@ -62,7 +62,7 @@ public class Admin2Tab extends Activity {
 //		});
 	}
 	
-	private class Getadministrators extends AsyncTask<Void, Void, Void> {
+	private class Getmembers extends AsyncTask<Void, Void, Void> {
    	 
         @Override
         protected void onPreExecute() {
@@ -89,11 +89,11 @@ public class Admin2Tab extends Activity {
                     JSONObject jsonObj = new JSONObject(jsonStr);
  
                     // Getting JSON Array node
-                    JSONArray administrators = jsonObj.getJSONArray("administrators");
+                    JSONArray members = jsonObj.getJSONArray("members");
  
-                    // looping through All administrators
-                    for (int i = 0; i < administrators.length(); i++) {
-                        JSONObject c = administrators.getJSONObject(i);
+                    // looping through All members
+                    for (int i = 0; i < members.length(); i++) {
+                        JSONObject c = members.getJSONObject(i);
                         
                         String name = c.getString("name");
                         String email = c.getString("email");
@@ -157,11 +157,12 @@ public class Admin2Tab extends Activity {
     public void onResume() {
     	super.onResume();
     	administratorList = new ArrayList<HashMap<String, String>>();
-    	new Getadministrators().execute();
+    	new Getmembers().execute();
     }
     public void callAkunBaru(View v) {
-		inew = new Intent(this, EditActivity.class);
+		inew = new Intent(this, NewActivity.class);
 		inew.putExtra("account_type", "members");
+		inew.putExtra("session_url", "http://apilearningpayment.totopeto.com/members");
 		startActivity(inew);
     }
 	

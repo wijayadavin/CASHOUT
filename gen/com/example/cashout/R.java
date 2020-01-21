@@ -35,11 +35,11 @@ public final class R {
         public static final int button_login_tenant=0x7f08000c;
         public static final int button_new=0x7f080000;
         public static final int button_topup=0x7f08001a;
+        public static final int edit_new_email=0x7f080008;
+        public static final int edit_new_name=0x7f080010;
         public static final int edit_phone=0x7f080012;
-        public static final int edit_profil_email=0x7f080008;
         public static final int edit_profil_nama=0x7f080006;
         public static final int edit_profil_phone=0x7f08000a;
-        public static final int edit_topup=0x7f080010;
         public static final int email=0x7f08001c;
         public static final int listView1=0x7f08000f;
         public static final int list_admin3=0x7f08001f;
@@ -48,10 +48,10 @@ public final class R {
         public static final int profil_email=0x7f080015;
         public static final int profil_nama=0x7f080013;
         public static final int profil_phone=0x7f080019;
+        public static final int profil_saldo=0x7f080016;
         public static final int tenant_list=0x7f08001e;
         public static final int textView1=0x7f080001;
         public static final int textView2=0x7f080004;
-        public static final int textView7=0x7f080016;
         public static final int textViewPhone=0x7f080011;
         public static final int textView_Nama=0x7f080005;
         public static final int textView_accountType=0x7f080003;

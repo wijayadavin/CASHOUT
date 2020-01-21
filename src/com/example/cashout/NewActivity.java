@@ -1,32 +1,100 @@
 package com.example.cashout;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class NewActivity extends Activity {
+
+	private String TAG = NewActivity.class.getSimpleName();
+    private ProgressDialog pDialog;
+    
+//    private static http://apilearningpayment.totopeto.com/administrators
+
+    String url = "";
+    Intent oldIntent;
+	Button bsimpan;
+	EditText ename, eemail, ephone;
 	TextView accountType;
-	Intent oldIntent;
-	EditText phoneEdit;
-	TextView phoneTextView;
-@Override
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new);
-		accountType = (TextView) findViewById(R.id.textView_accountType);
 		oldIntent = getIntent();
-		accountType.setText(oldIntent.getStringExtra("account_type"));
-		phoneEdit = (EditText) findViewById(R.id.edit_phone);
-		phoneTextView = (TextView) findViewById(R.id.textViewPhone);
-		if(accountType.getText().toString().equals("administrators")) {
-			phoneEdit.setVisibility(View.GONE);
-			phoneTextView.setVisibility(View.GONE);
-		}
+		url = oldIntent.getStringExtra("session_url");
+		bsimpan = (Button) findViewById(R.id.button_new);
+		ename = (EditText) findViewById(R.id.edit_new_name);
+		eemail = (EditText) findViewById(R.id.edit_new_email);
+		ephone = (EditText) findViewById(R.id.edit_phone);
+		accountType = (TextView) findViewById(R.id.textView_accountType);
+		accountType.setText(oldIntent.getStringExtra("session_url"));
+		bsimpan.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				new AddContact().execute();
+//				finish();
+				Intent intent = new Intent(NewActivity.this, AdminActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
-	public void callToPrevious(View v) {
-		finish();
+	
+	private class AddContact extends AsyncTask<Void, Void, Void> {
+		
+		@Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress dialog
+            pDialog = new ProgressDialog(NewActivity.this);
+            pDialog.setMessage("Please wait...");
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+        
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            String post_params = null;
+            JSONObject params = new JSONObject();
+ 
+            try {
+            	params.put("name", ename.getText().toString());
+            	params.put("email", eemail.getText().toString());
+            	params.put("phone", ephone.getText().toString());
+            	post_params = params.toString();
+            	
+            } catch (JSONException e) {
+            	e.printStackTrace();
+            }
+            
+            HttpHandler data = new HttpHandler();
+            String jsonStr = data.makePostRequest(url, post_params);
+            Log.e(TAG, "Response from url: " + jsonStr);
+            
+            return null;
+        }
+ 
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            // Dismiss the progress dialog
+            if (pDialog.isShowing())
+                pDialog.dismiss();
+            /**
+             * Updating parsed JSON data into ListView
+             * */
+        }
 	}
 }

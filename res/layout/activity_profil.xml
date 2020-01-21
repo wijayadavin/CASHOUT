@@ -84,7 +84,7 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/profil_saldo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView_saldo"
@@ -121,7 +121,7 @@
         android:text="@string/button_topup" />
 
     <EditText
-        android:id="@+id/edit_topup"
+        android:id="@+id/edit_new_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/button_new"
@@ -136,7 +136,7 @@
         android:id="@+id/profil_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView7"
+        android:layout_above="@+id/profil_saldo"
         android:layout_alignLeft="@+id/textView_accountType"
         android:text="TextView" />
 

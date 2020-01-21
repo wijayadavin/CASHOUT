@@ -26,7 +26,7 @@ public class Admin3Tab extends Activity {
     private ListView lv;
  
     // URL to get administrators JSON
-    private static String url = "https://api.myjson.com/bins/187qqq";
+    private static String url = "http://apilearningpayment.totopeto.com/administrators";
  
     ArrayList<HashMap<String, String>> administratorList;
 
@@ -160,8 +160,9 @@ public class Admin3Tab extends Activity {
     	new Getadministrators().execute();
     }
     public void callAkunBaru(View v) {
-		inew = new Intent(this, EditActivity.class);
+		inew = new Intent(this, NewActivity.class);
 		inew.putExtra("account_type", "administrators");
+		inew.putExtra("session_url", "http://apilearningpayment.totopeto.com/administrators");
 		startActivity(inew);
     }
 	
