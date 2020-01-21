@@ -31,20 +31,17 @@ public class Admin1Tab extends Activity {
     // URL to get tenants JSON
     private static String url = "http://apilearningpayment.totopeto.com/tenants";
  
-    ArrayList<HashMap<String, String>> memberList;
+    ArrayList<HashMap<String, String>> tenantsList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.tab_admin3);
-        
-        lv = (ListView) findViewById(R.id.list_admin3);        
+		setContentView(R.layout.tab_admin1);
+        lv = (ListView) findViewById(R.id.list_admin1);        
         lv.setOnItemClickListener(new OnItemClickListener() {
-			
-		
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		// TODO Auto-generated method stub
-			HashMap<String, String> hm = memberList.get(position);
+			HashMap<String, String> hm = tenantsList.get(position);
 			Intent intent = new Intent(Admin1Tab.this, ProfilActivity.class);
 			intent.putExtra("name", hm.get("name"));
 			intent.putExtra("email", hm.get("email"));
@@ -101,7 +98,7 @@ public class Admin1Tab extends Activity {
                         administrator.put("email", email);
                         
                         // adding administrator to administrator list
-                        memberList.add(administrator);
+                        tenantsList.add(administrator);
                     }
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -141,7 +138,7 @@ public class Admin1Tab extends Activity {
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    Admin1Tab.this, memberList,
+                    Admin1Tab.this, tenantsList,
                     R.layout.list_item, new String[]{"name", "email"}, new int[]{R.id.name, R.id.email});
  
             lv.setAdapter(adapter);
@@ -151,7 +148,7 @@ public class Admin1Tab extends Activity {
     @Override
     public void onResume() {
     	super.onResume();
-    	memberList = new ArrayList<HashMap<String, String>>();
+    	tenantsList = new ArrayList<HashMap<String, String>>();
     	new Gettenants().execute();
     }
     public void callAkunBaru(View v) {

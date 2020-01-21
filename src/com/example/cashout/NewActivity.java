@@ -19,35 +19,31 @@ public class NewActivity extends Activity {
 	private String TAG = NewActivity.class.getSimpleName();
     private ProgressDialog pDialog;
     
-//    private static http://apilearningpayment.totopeto.com/administrators
-
-    String url = "";
-    Intent oldIntent;
+    private static String url = "http://apilearningpayment.totopeto.com/administrators";
+	TextView accountType;
 	Button bsimpan;
 	EditText ename, eemail, ephone;
-	TextView accountType;
-	
+	Intent oldIntent;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new);
 		oldIntent = getIntent();
-		url = oldIntent.getStringExtra("session_url");
-		bsimpan = (Button) findViewById(R.id.button_new);
 		ename = (EditText) findViewById(R.id.edit_new_name);
 		eemail = (EditText) findViewById(R.id.edit_new_email);
 		ephone = (EditText) findViewById(R.id.edit_phone);
 		accountType = (TextView) findViewById(R.id.textView_accountType);
-		accountType.setText(oldIntent.getStringExtra("session_url"));
+		accountType.setText(oldIntent.getStringExtra("account_type"));
+		bsimpan = (Button) findViewById(R.id.button_buat);
 		bsimpan.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				new AddContact().execute();
-//				finish();
-				Intent intent = new Intent(NewActivity.this, AdminActivity.class);
-				startActivity(intent);
+				finish();
+//				Intent intent = new Intent(NewActivity.this, AdminActivity.class);
+//				startActivity(intent);
 			}
 		});
 	}
@@ -73,6 +69,7 @@ public class NewActivity extends Activity {
             	params.put("name", ename.getText().toString());
             	params.put("email", eemail.getText().toString());
             	params.put("phone", ephone.getText().toString());
+            	params.put("current_balance", "0");
             	post_params = params.toString();
             	
             } catch (JSONException e) {

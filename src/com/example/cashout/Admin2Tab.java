@@ -14,6 +14,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -28,28 +30,27 @@ public class Admin2Tab extends Activity {
     // URL to get members JSON
     private static String url = "http://apilearningpayment.totopeto.com/members";
  
-    ArrayList<HashMap<String, String>> administratorList;
+    ArrayList<HashMap<String, String>> membersList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.tab_admin3);
+		setContentView(R.layout.tab_admin2);
         
-        lv = (ListView) findViewById(R.id.list_admin3);
-//        badd = (Button) findViewById(R.id.btadd);
-        
-//        lv.setOnItemClickListener(new OnItemClickListener() {
-//			
-//			@Override
-//			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//				// TODO Auto-generated method stub
-//				HashMap<String, String> hm = administratorList.get(position);
-//				Intent intent = new Intent(AdminActivity.this, administratorMessages.class);
-//				intent.putExtra("name", hm.get("name"));
-//				intent.putExtra("email", hm.get("email"));
-//				startActivity(intent);
-//			}
-//		});
+        lv = (ListView) findViewById(R.id.list_admin2);
+        lv.setOnItemClickListener(new OnItemClickListener() {
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		// TODO Auto-generated method stub
+			HashMap<String, String> hm = membersList.get(position);
+			Intent intent = new Intent(Admin2Tab.this, ProfilActivity.class);
+			intent.putExtra("name", hm.get("name"));
+			intent.putExtra("email", hm.get("email"));
+			intent.putExtra("phone", hm.get("phone"));
+			intent.putExtra("account_type", "members");
+			intent.putExtra("request_from", "admin");
+			startActivity(intent);
+			}
+		});
 //        
 //        badd.setOnClickListener(new View.OnClickListener() {
 //			
@@ -106,7 +107,7 @@ public class Admin2Tab extends Activity {
                         administrator.put("email", email);
                         
                         // adding administrator to administrator list
-                        administratorList.add(administrator);
+                        membersList.add(administrator);
                     }
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -146,7 +147,7 @@ public class Admin2Tab extends Activity {
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    Admin2Tab.this, administratorList,
+                    Admin2Tab.this, membersList,
                     R.layout.list_item, new String[]{"name", "email"}, new int[]{R.id.name, R.id.email});
  
             lv.setAdapter(adapter);
@@ -156,13 +157,13 @@ public class Admin2Tab extends Activity {
     @Override
     public void onResume() {
     	super.onResume();
-    	administratorList = new ArrayList<HashMap<String, String>>();
+    	membersList = new ArrayList<HashMap<String, String>>();
     	new Getmembers().execute();
     }
     public void callAkunBaru(View v) {
 		inew = new Intent(this, NewActivity.class);
 		inew.putExtra("account_type", "members");
-		inew.putExtra("session_url", "http://apilearningpayment.totopeto.com/members");
+		inew.putExtra("session_url", "http://apilearningpayment.totopeto.com/members ");
 		startActivity(inew);
     }
 	

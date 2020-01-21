@@ -14,10 +14,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class Admin3Tab extends Activity {
 	Intent inew;
@@ -36,20 +38,17 @@ public class Admin3Tab extends Activity {
 		setContentView(R.layout.tab_admin3);
         
         lv = (ListView) findViewById(R.id.list_admin3);
-//        badd = (Button) findViewById(R.id.btadd);
-        
-//        lv.setOnItemClickListener(new OnItemClickListener() {
-//			
-//			@Override
-//			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//				// TODO Auto-generated method stub
-//				HashMap<String, String> hm = administratorList.get(position);
-//				Intent intent = new Intent(AdminActivity.this, administratorMessages.class);
-//				intent.putExtra("name", hm.get("name"));
-//				intent.putExtra("email", hm.get("email"));
-//				startActivity(intent);
-//			}
-//		});
+        lv.setOnItemClickListener(new OnItemClickListener() {
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		// TODO Auto-generated method stub
+			HashMap<String, String> hm = administratorList.get(position);
+			Intent intent = new Intent(Admin3Tab.this, ProfilActivity.class);
+			intent.putExtra("name", hm.get("name"));
+			intent.putExtra("email", hm.get("email"));
+			intent.putExtra("account_type", "admin");
+			startActivity(intent);
+			}
+		});
 //        
 //        badd.setOnClickListener(new View.OnClickListener() {
 //			

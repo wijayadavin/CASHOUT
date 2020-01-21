@@ -5,13 +5,13 @@
     android:orientation="vertical" >
 
     <ListView
-        android:id="@+id/tenant_list"
+        android:id="@+id/list_admin1"
         android:layout_width="fill_parent"
         android:layout_height="390dp"
         android:layout_weight="0.52" />
 
     <Button
-        android:id="@+id/button_new"
+        android:id="@+id/button_buat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_akunbaru" 
