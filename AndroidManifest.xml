@@ -36,6 +36,7 @@
 		<activity android:name="TenantTab"></activity>
 		<activity android:name="PaymentActivity"></activity>
 		<activity android:name="HttpHandler"></activity>
+		<activity android:name="HistoriTopupActivity"></activity>
     </application>
 
 </manifest>

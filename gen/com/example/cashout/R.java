@@ -25,14 +25,14 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080028;
+        public static final int action_settings=0x7f080029;
         public static final int button2=0x7f080002;
         public static final int button_buat=0x7f080000;
         public static final int button_histori=0x7f08001b;
         public static final int button_historitopup=0x7f08001c;
         public static final int button_login_admin=0x7f08000e;
         public static final int button_login_member=0x7f08000f;
-        public static final int button_login_tenant=0x7f08000d;
+        public static final int button_login_tenant=0x7f08000c;
         public static final int button_new_topup=0x7f08001e;
         public static final int button_save_edit=0x7f080008;
         public static final int button_topup=0x7f08001f;
@@ -43,13 +43,15 @@ public final class R {
         public static final int edit_profil_email=0x7f08000a;
         public static final int edit_profil_nama=0x7f080006;
         public static final int edit_profil_phone=0x7f080009;
+        public static final int edit_user_email=0x7f08000d;
         public static final int email=0x7f080021;
-        public static final int listView1=0x7f080010;
+        public static final int listView_historiTopup=0x7f080010;
         public static final int list_admin1=0x7f080023;
         public static final int list_admin2=0x7f080024;
         public static final int list_admin3=0x7f080025;
         public static final int list_tab_member1=0x7f080026;
         public static final int list_tab_member2=0x7f080027;
+        public static final int list_tenant_tab=0x7f080028;
         public static final int name=0x7f080020;
         public static final int phone_number=0x7f080022;
         public static final int profil_email=0x7f080019;
@@ -59,7 +61,6 @@ public final class R {
         public static final int textView1=0x7f080001;
         public static final int textView2=0x7f080004;
         public static final int textViewPhone=0x7f080013;
-        public static final int textViewUrl=0x7f08000c;
         public static final int textView_Nama=0x7f080005;
         public static final int textView_accountType=0x7f080003;
         public static final int textView_email=0x7f080007;
@@ -100,13 +101,14 @@ public final class R {
         public static final int button_edit=0x7f050016;
         public static final int button_histori=0x7f050015;
         public static final int button_historiTopup=0x7f050017;
+        public static final int button_text_Member=0x7f050004;
+        public static final int button_text_Tenant=0x7f050005;
         public static final int button_text_logout=0x7f050006;
-        public static final int button_text_pembeli=0x7f050004;
-        public static final int button_text_penjual=0x7f050005;
         public static final int button_topup=0x7f050013;
         public static final int button_ubah=0x7f050018;
         public static final int hello_world=0x7f050001;
         public static final int hint_topup=0x7f050014;
+        public static final int my_email=0x7f050021;
         public static final int text_email=0x7f05000e;
         public static final int text_jumlah_pembayaran=0x7f05001f;
         public static final int text_nama=0x7f05000d;
@@ -119,9 +121,12 @@ public final class R {
         public static final int title_edit=0x7f05001a;
         public static final int title_historitopup=0x7f05001b;
         public static final int title_member=0x7f050019;
+        public static final int title_member_tab2=0x7f050023;
         public static final int title_payment=0x7f05001d;
         public static final int title_profil=0x7f050011;
+        public static final int title_tab_tenant=0x7f050024;
         public static final int title_tenants=0x7f05001c;
+        public static final int title_tenants_list=0x7f050022;
     }
     public static final class style {
         /** 

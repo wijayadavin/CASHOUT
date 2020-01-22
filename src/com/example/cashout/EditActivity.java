@@ -21,7 +21,7 @@ public class EditActivity extends Activity {
 	Button bsimpan;
 	String url="";
 	EditText ename, eemail, ephone;
-	TextView PhoneTextView, accountType,	urlTextView;
+	TextView PhoneTextView, accountType;
 @Override
 protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
@@ -31,9 +31,12 @@ protected void onCreate(Bundle savedInstanceState) {
 	ename = (EditText) findViewById(R.id.edit_profil_nama);
 	eemail = (EditText) findViewById(R.id.edit_profil_email);
 	ephone = (EditText) findViewById(R.id.edit_profil_phone);
-	urlTextView = (TextView) findViewById(R.id.textViewUrl);
-	//TV Phone
+	//TV
 	PhoneTextView = (TextView) findViewById(R.id.textView_phone);
+	//SET_TEXT
+	ename.setText(oldIntent.getStringExtra("user_name"));
+	eemail.setText(oldIntent.getStringExtra("user_email"));
+	ephone.setText(oldIntent.getStringExtra("user_phone_number"));
 	//menangkap tipe akun dari halaman sebelumnya
 	accountType = (TextView) findViewById(R.id.textView_accountType);
 	accountType.setText(oldIntent.getStringExtra("account_type"));
@@ -51,7 +54,6 @@ protected void onCreate(Bundle savedInstanceState) {
 	if(accountType.getText().toString().equals("tenants")) {
 		url = "http://apilearningpayment.totopeto.com/tenants";
 	}		
-	urlTextView.setText(url);
 	bsimpan = (Button) findViewById(R.id.button_save_edit);
 	bsimpan.setOnClickListener(new View.OnClickListener() {	
 		@Override
@@ -77,7 +79,7 @@ private class Edit extends AsyncTask<Void, Void, Void> {
     
     @Override
     protected Void doInBackground(Void... arg0) {
-		String id = oldIntent.getStringExtra("id");
+		String user_id = oldIntent.getStringExtra("user_id");
         String put_params = null;
         JSONObject params = new JSONObject();
 
@@ -92,7 +94,7 @@ private class Edit extends AsyncTask<Void, Void, Void> {
         }
         
         HttpHandler data = new HttpHandler();
-        String jsonStr = data.makePutRequest(url + id, put_params);
+        String jsonStr = data.makePutRequest(url + user_id, put_params);
         Log.e(TAG, "Response from url: " + jsonStr);
 
         

@@ -16,13 +16,6 @@
             android:layout_gravity="end"
             android:text="@string/button_text_logout" 
             android:onClick="callLogout"/>
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/title_member"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
  		<FrameLayout
             android:id="@android:id/tabcontent"
             android:layout_width="fill_parent"

@@ -110,7 +110,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button_histori"
-        android:text="@string/button_historiTopup" />
+        android:text="@string/button_historiTopup" 
+        android:onClick="callTopupHistory"/>
 
     <TextView
         android:id="@+id/profil_phone"
@@ -119,17 +120,6 @@
         android:layout_above="@+id/profil_saldo"
         android:layout_alignLeft="@+id/textView_accountType"
         android:text="TextView" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_alignParentRight="true"
-        android:gravity="center|left"
-        android:text="@string/title_profil"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
         android:id="@+id/edit_new_name"
@@ -152,5 +142,16 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button_historitopup"
         android:text="@string/button_topup" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toRightOf="@+id/button2"
+        android:gravity="center|left"
+        android:text="@string/title_profil"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

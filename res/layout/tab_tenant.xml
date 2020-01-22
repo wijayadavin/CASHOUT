@@ -4,8 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.10"
+        android:text="@string/title_tab_tenant"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/list_tenant_tab"
         android:layout_width="fill_parent"
         android:layout_height="390dp"
         android:layout_weight="0.52" />

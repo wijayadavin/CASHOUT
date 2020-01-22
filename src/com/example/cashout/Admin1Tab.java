@@ -42,12 +42,12 @@ public class Admin1Tab extends Activity {
 		// TODO Auto-generated method stub
 			HashMap<String, String> hm = tenantsList.get(position);
 			Intent intent = new Intent(Admin1Tab.this, ProfilActivity.class);
-			intent.putExtra("id", hm.get("id"));
-			intent.putExtra("name", hm.get("name"));
-			intent.putExtra("email", hm.get("email"));
-			intent.putExtra("phone_number", hm.get("phone_number"));
+			intent.putExtra("user_id", hm.get("id"));
+			intent.putExtra("user_name", hm.get("name"));
+			intent.putExtra("user_email", hm.get("email"));
 			intent.putExtra("account_type", "tenants");
 			intent.putExtra("request_from", "admin");
+			intent.putExtra("url",url);
 			startActivity(intent);
 			}
 		});

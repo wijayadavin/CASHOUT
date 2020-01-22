@@ -13,18 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:text="@string/button_text_penjual" 
-        android:onClick="callLoginAsTenant"/>
+        android:onClick="callLoginAsTenant"
+        android:text="@string/button_text_Member" />
 
-    <Button
-        android:id="@+id/button_login_member"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/edit_user_email"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button_login_tenant"
-        android:layout_below="@+id/button_login_tenant"
-        android:layout_marginTop="42dp"
-        android:onClick="callLoginAsMember"
-        android:text="@string/button_text_pembeli" />
+        android:layout_above="@+id/button_login_admin"
+        android:layout_alignLeft="@+id/button_login_admin"
+        android:layout_alignRight="@+id/button_login_admin"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="@string/my_email" />
 
     <Button
         android:id="@+id/button_login_admin"
@@ -32,8 +33,16 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/button_login_tenant"
         android:layout_alignLeft="@+id/button_login_tenant"
-        android:layout_marginBottom="46dp"
         android:onClick="callLoginAsAdmin"
         android:text="@string/buton_text_admin" />
+
+    <Button
+        android:id="@+id/button_login_member"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_login_tenant"
+        android:layout_below="@+id/button_login_tenant"
+        android:onClick="callLoginAsMember"
+        android:text="@string/button_text_Tenant" />
 
 </RelativeLayout>

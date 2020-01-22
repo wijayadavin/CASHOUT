@@ -22,14 +22,16 @@ public class PaymentActivity extends Activity {
 	Button bsimpan;
 	EditText eamount;
 	Intent oldIntent;
+	String member_id;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_payment);
 		oldIntent = getIntent();
+		setContentView(R.layout.activity_payment);
 		eamount = (EditText) findViewById(R.id.edit_amount);
 		accountType = (TextView) findViewById(R.id.tv_tenant_id);
 		accountType.setText(oldIntent.getStringExtra("tenant_id"));
+		member_id = oldIntent.getStringExtra("member_id");
 		bsimpan = (Button) findViewById(R.id.button_save_edit);
 		bsimpan.setOnClickListener(new View.OnClickListener() {	
 			@Override
@@ -59,7 +61,7 @@ public class PaymentActivity extends Activity {
             JSONObject params = new JSONObject();
  
             try {
-            	params.put("member_id", "1");
+            	params.put("member_id", member_id);
             	params.put("tenant_id", oldIntent.getStringExtra("tenant_id"));
             	params.put("amount", eamount.getText().toString());
             	post_params = params.toString();

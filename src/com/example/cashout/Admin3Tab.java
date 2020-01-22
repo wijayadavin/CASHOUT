@@ -43,9 +43,12 @@ public class Admin3Tab extends Activity {
 		// TODO Auto-generated method stub
 			HashMap<String, String> hm = administratorList.get(position);
 			Intent intent = new Intent(Admin3Tab.this, ProfilActivity.class);
-			intent.putExtra("name", hm.get("name"));
-			intent.putExtra("email", hm.get("email"));
-			intent.putExtra("account_type", "admin");
+			intent.putExtra("user_id", hm.get("id"));
+			intent.putExtra("user_name", hm.get("name"));
+			intent.putExtra("user_email", hm.get("email"));
+			intent.putExtra("account_type", "administrators");
+			intent.putExtra("request_from", "admin");
+			intent.putExtra("url",url);
 			startActivity(intent);
 			}
 		});
