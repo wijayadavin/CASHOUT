@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:onClick="callLoginAsTenant"
+        android:onClick="callLoginAsMember"
         android:text="@string/button_text_Member" />
 
     <EditText
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button_login_tenant"
         android:layout_below="@+id/button_login_tenant"
-        android:onClick="callLoginAsMember"
+        android:onClick="callLoginAsTenant"
         android:text="@string/button_text_Tenant" />
 
 </RelativeLayout>

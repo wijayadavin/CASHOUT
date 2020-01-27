@@ -129,17 +129,6 @@
         android:layout_below="@+id/button_historitopup"
         android:text="@string/button_topup" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_toRightOf="@+id/button2"
-        android:gravity="center|left"
-        android:text="@string/title_profil"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <EditText
         android:id="@+id/edit_topup"
         android:layout_width="wrap_content"
@@ -154,5 +143,17 @@
 
         <requestFocus />
     </EditText>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/profil_phone"
+        android:gravity="center|left"
+        android:text="@string/title_profil"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
