@@ -6,6 +6,8 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.R.string;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -19,9 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ProfilActivity extends Activity {
+	private static String url_topup = "http://apilearningpayment.totopeto.com/transactions/top_up";
 	private String TAG = ProfilActivity.class.getSimpleName();
-    private ProgressDialog pDialog;
-	TextView accountType, namaProfil, phoneProfil, emailProfil, saldoTextView, saldoProfil;
+    private ProgressDialog pDialog, pDialog2;
+	TextView accountType, namaProfil, phoneProfil, emailProfil, saldoTextView, saldoProfil, idEdit;
 	EditText topupEdit;
 	Intent oldIntent, iEdit;
 	Button buttonBack, topupButton, historiTopupButton;
@@ -42,20 +45,29 @@ public class ProfilActivity extends Activity {
 		emailProfil = (TextView) findViewById(R.id.profil_email);
 		saldoTextView = (TextView) findViewById(R.id.textView_saldo);
 		saldoProfil = (TextView) findViewById(R.id.profil_saldo);
+		//find R.ID topup data all account
+		topupButton = (Button) findViewById(R.id.button_new_topup);
+		topupEdit = (EditText) findViewById(R.id.edit_topup);
+		historiTopupButton = (Button) findViewById(R.id.button_historitopup);
+		//find R.ID back button all account
+		buttonBack = (Button) findViewById(R.id.button2);	
+		topupButton.setOnClickListener(new View.OnClickListener() {	
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				new TopUp().execute();
+				topupEdit.setText(0);
+			}
+		});
+		
+		
+		
 		//setText profile data khusus account non-admin
 		if(account_type.equals("members")) 
 		{
 		phoneProfil.setText(oldIntent.getStringExtra("user_phone_number"));
 		}
-		//find R.ID topup data all account
-		topupButton = (Button) findViewById(R.id.button_new_topup);
-		topupButton = (Button) findViewById(R.id.button_new_topup);
-		topupEdit = (EditText) findViewById(R.id.edit_new_name);
-		historiTopupButton = (Button) findViewById(R.id.button_historitopup);
-		//find R.ID back button all account
-		buttonBack = (Button) findViewById(R.id.button2);	
-		
-		
+
 		//***TEMPLATING***
 		//template khusus account admin req by admin AA
 		if(account_type.equals("administrators")) 
@@ -98,6 +110,52 @@ public class ProfilActivity extends Activity {
 
 		}
 	}
+	
+	private class TopUp extends AsyncTask<Void, Void, Void> {
+		
+		@Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress dialog
+            pDialog2 = new ProgressDialog(ProfilActivity.this);
+            pDialog2.setMessage("Processing TopUp request...");
+            pDialog2.setCancelable(false);
+            pDialog2.show();
+        }
+        
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            String post_params = null;
+            JSONObject params = new JSONObject();
+ 
+            try {
+            	params.put("member_id", user_id);
+            	params.put("amount", topupEdit.getText().toString());
+            	post_params = params.toString();
+            	
+            } catch (JSONException e) {
+            	e.printStackTrace();
+            }
+            
+            HttpHandler data = new HttpHandler();
+            String jsonStr = data.makePostRequest(url_topup, post_params);
+            Log.e(TAG, "Response from url: " + jsonStr);
+            
+            return null;
+        }
+ 
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            // Dismiss the progress dialog
+            if (pDialog2.isShowing())
+                pDialog2.dismiss();
+            /**
+             * Updating parsed JSON data into ListView
+             * */
+        }
+	}
+	
 	private class Getaccount extends AsyncTask<Void, Void, Void>
 	{
         protected void onPreExecute() 

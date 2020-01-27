@@ -121,20 +121,6 @@
         android:layout_alignLeft="@+id/textView_accountType"
         android:text="TextView" />
 
-    <EditText
-        android:id="@+id/edit_new_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/button_historitopup"
-        android:layout_toLeftOf="@+id/button_new_topup"
-        android:ems="10"
-        android:hint="@string/hint_topup"
-        android:inputType="number" >
-
-        <requestFocus />
-    </EditText>
-
     <Button
         android:id="@+id/button_new_topup"
         android:layout_width="wrap_content"
@@ -153,5 +139,20 @@
         android:gravity="center|left"
         android:text="@string/title_profil"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/edit_topup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button_new_topup"
+        android:layout_alignBottom="@+id/button_new_topup"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/button_new_topup"
+        android:ems="10"
+        android:hint="@string/edit_topup"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

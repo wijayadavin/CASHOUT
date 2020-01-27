@@ -42,17 +42,17 @@ protected void onCreate(Bundle savedInstanceState) {
 	accountType.setText(oldIntent.getStringExtra("account_type"));
 	//khusus account admin
 	if(accountType.getText().toString().equals("administrators")) {
-		url = "http://apilearningpayment.totopeto.com/administrators";
+		url = "http://apilearningpayment.totopeto.com/administrators/";
 		ephone.setVisibility(View.GONE);
 		PhoneTextView.setVisibility(View.GONE);
 	}
 	//khusus account members
 	if(accountType.getText().toString().equals("members")) {
-		url = "http://apilearningpayment.totopeto.com/members";
+		url = "http://apilearningpayment.totopeto.com/members/";
 	}
 	//khusus account tenants
 	if(accountType.getText().toString().equals("tenants")) {
-		url = "http://apilearningpayment.totopeto.com/tenants";
+		url = "http://apilearningpayment.totopeto.com/tenants/";
 	}		
 	bsimpan = (Button) findViewById(R.id.button_save_edit);
 	bsimpan.setOnClickListener(new View.OnClickListener() {	

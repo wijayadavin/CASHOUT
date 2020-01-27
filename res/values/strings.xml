@@ -38,5 +38,6 @@
     <string name="title_tenants_list">OUR TENANT LIST:</string>
     <string name="title_member_tab2">YOUR TRANSACTIONS HISTORY:</string>
     <string name="title_tab_tenant">YOUR TRANSACTIONS HISTORY:</string>
+    <string name="edit_topup">Put top-up amount here</string>
 
 </resources>
