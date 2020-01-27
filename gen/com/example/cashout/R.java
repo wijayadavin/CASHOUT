@@ -92,6 +92,9 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
+        public static final int add_admin=0x7f050028;
+        public static final int add_member=0x7f050027;
+        public static final int add_tenant=0x7f050026;
         public static final int administrators=0x7f05000f;
         public static final int app_name=0x7f050000;
         public static final int buton_text_admin=0x7f050003;

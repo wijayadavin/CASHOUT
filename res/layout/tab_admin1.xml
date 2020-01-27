@@ -14,8 +14,7 @@
         android:id="@+id/button_buat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_akunbaru" 
         android:onClick="callAkunBaru"
-        />
+        android:text="@string/add_tenant" />
 
 </LinearLayout>

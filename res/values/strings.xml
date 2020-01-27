@@ -39,5 +39,8 @@
     <string name="title_member_tab2">YOUR TRANSACTIONS HISTORY:</string>
     <string name="title_tab_tenant">YOUR TRANSACTIONS HISTORY:</string>
     <string name="edit_topup">Put top-up amount here</string>
+    <string name="add_tenant">Add new Tenant account</string>
+    <string name="add_member">Add new Member account</string>
+    <string name="add_admin">Add new Admin account</string>
 
 </resources>
