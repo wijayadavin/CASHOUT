@@ -23,10 +23,10 @@ public class HistoriTopupActivity extends Activity {
 	private String TAG = AdminActivity.class.getSimpleName();
     private ProgressDialog pDialog;
     private ListView lv;
-    // URL to get topups JSON
+    // URL to get histories JSON
     private static String url = "http://apilearningpayment.totopeto.com/transactions/top_up_history?member_id=";
  
-    ArrayList<HashMap<String, String>> topupsList;
+    ArrayList<HashMap<String, String>> historiesList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class HistoriTopupActivity extends Activity {
         lv = (ListView) findViewById(R.id.listView_historiTopup);
 	}
 	
-	private class Gettopups extends AsyncTask<Void, Void, Void> {
+	private class Gethistories extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -62,22 +62,22 @@ public class HistoriTopupActivity extends Activity {
                     JSONObject jsonObj = new JSONObject(jsonStr);
  
                     // Getting JSON Array node
-                    JSONArray topups = jsonObj.getJSONArray("topups");
+                    JSONArray histories = jsonObj.getJSONArray("histories");
  
-                    // looping through All topups
-                    for (int i = 0; i < topups.length(); i++) {
-                        JSONObject c = topups.getJSONObject(i);
+                    // looping through All histories
+                    for (int i = 0; i < histories.length(); i++) {
+                        JSONObject c = histories.getJSONObject(i);
                         
                         String amount = c.getString("amount");
                         
-                        // tmp hash map for single topups
+                        // tmp hash map for single histories
                         HashMap<String, String> topup = new HashMap<String, String>();
  
                         // adding each child node to HashMap key => value
                         topup.put("amount", amount);
                         
                         // adding topup to topup list
-                        topupsList.add(topup);
+                        historiesList.add(topup);
                     }
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -117,7 +117,7 @@ public class HistoriTopupActivity extends Activity {
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    HistoriTopupActivity.this, topupsList,
+                    HistoriTopupActivity.this, historiesList,
                     R.layout.list_item, new String[]{"amount"}, 
                     new int[]{R.id.name});
  
@@ -128,8 +128,8 @@ public class HistoriTopupActivity extends Activity {
     @Override
     public void onResume() {
     	super.onResume();
-    	topupsList = new ArrayList<HashMap<String, String>>();
-    	new Gettopups().execute();
+    	historiesList = new ArrayList<HashMap<String, String>>();
+    	new Gethistories().execute();
     }
 	public void callToPrevious(View v) {
 		finish();
