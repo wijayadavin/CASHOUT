@@ -19,15 +19,15 @@ public class AdminActivity extends TabActivity {
         Intent intent;
          
         intent = new Intent().setClass(this, Admin1Tab.class);//content pada tab 
-        spec = tabhost.newTabSpec("tab1").setIndicator("Akun Toko",null).setContent(intent);//mengeset nama tab dan mengisi content pada menu tab
+        spec = tabhost.newTabSpec("tab1").setIndicator("Tenants",null).setContent(intent);//mengeset nama tab dan mengisi content pada menu tab
         tabhost.addTab(spec);//membuat tab baru 
          
         intent = new Intent().setClass(this, Admin2Tab.class);
-        spec = tabhost.newTabSpec("tab2").setIndicator("Akun Pembeli",null).setContent(intent);
+        spec = tabhost.newTabSpec("tab2").setIndicator("Members",null).setContent(intent);
         tabhost.addTab(spec);
          
         intent = new Intent().setClass(this, Admin3Tab.class);
-        spec = tabhost.newTabSpec("tab3").setIndicator("Akun Admin",null).setContent(intent);
+        spec = tabhost.newTabSpec("tab3").setIndicator("Administrators",null).setContent(intent);
         tabhost.addTab(spec);
  
     }
