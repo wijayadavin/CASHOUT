@@ -31,7 +31,6 @@ public class TenantsActivity extends TabActivity {
         tenants_intent.putExtra("user_email", oldIntent.getStringExtra("user_email"));
         spec = tabhost.newTabSpec("akun").setIndicator("Akun",null).setContent(tenants_intent);
         tabhost.addTab(spec);
- 
     }
 	public void callLogout(View v) {
 	finish();

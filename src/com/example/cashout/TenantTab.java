@@ -27,7 +27,7 @@ public class TenantTab extends Activity
     private ProgressDialog pDialog1, pDialog2 ;
     private ListView lv;
     // URL to get transactions JSON
-    private static String url = "http://apilearningpayment.totopeto.com/transactions?tenant_id=";
+    private static String url = "http://apilearningpayment.totopeto.com/tenants/", member_name = "";
     ArrayList<HashMap<String, String>> tenantList;
     ArrayList<HashMap<String, String>> transactionsList;
     String user_email, user_id;
@@ -36,9 +36,9 @@ public class TenantTab extends Activity
 	{
 		oldIntent = getIntent();
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.tab_member1);
+		setContentView(R.layout.tab_tenant);
 		user_email = oldIntent.getStringExtra("user_email");
-        lv = (ListView) findViewById(R.id.list_tab_member1);        
+        lv = (ListView) findViewById(R.id.list_tenant_tab);        
 	}
 	private class getID extends AsyncTask<Void, Void, Void>
 	{
@@ -140,10 +140,8 @@ public class TenantTab extends Activity
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
             // Making a request to URL and getting response
-            String jsonStr = sh.makeServiceCall(url+user_id);
- 
+            String jsonStr = sh.makeServiceCall(url+user_id+"/transaction");
             Log.e(TAG, "Response from url: " + jsonStr);
- 
             // Read JSON
             if (jsonStr != null) {
                 try {
@@ -163,8 +161,21 @@ public class TenantTab extends Activity
                         HashMap<String, String> tenant = new HashMap<String, String>();
  
                         // adding each child node to HashMap key => value
-                        tenant.put("member_id", member_id);
-                        tenant.put("amount", amount);
+//                        tenant.put("member_id", member_id);
+                        // adding member name for each transactions
+                        String jsonStr2 = sh.makeServiceCall("http://apilearningpayment.totopeto.com/members/");
+                        JSONObject jsonObj2 = new JSONObject(jsonStr2);
+                        JSONArray account = jsonObj2.getJSONArray("members");
+                        for (int index = 0; index < account.length(); index++) 
+                        {
+                            JSONObject m = account.getJSONObject(index);
+                            if(m.getString("id").contentEquals(member_id))
+                            {
+                            		member_name = m.getString("name");
+                            }
+                        }
+                        tenant.put("member_name", "Purchased by:" + member_name);
+                        tenant.put("amount","Amount:" + amount);
                         
                         // adding tenant to tenant list
                         transactionsList.add(tenant);
@@ -209,7 +220,7 @@ public class TenantTab extends Activity
              * */
             ListAdapter adapter = new SimpleAdapter(
             		TenantTab.this, transactionsList,
-                    R.layout.list_item, new String[]{"member_id", "amount"}, new int[]{R.id.name, R.id.email});
+                    R.layout.list_item, new String[]{"member_name", "amount"}, new int[]{R.id.name, R.id.email});
  
             lv.setAdapter(adapter);
         }

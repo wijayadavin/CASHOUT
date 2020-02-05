@@ -25,7 +25,7 @@ public class Member2Tab extends Activity {
 	private String TAG = AdminActivity.class.getSimpleName();
     private ProgressDialog pDialog1, pDialog2 ;
     private ListView lv;
-    private static String url = "http://apilearningpayment.totopeto.com/transactions?member_id=";
+    private static String url = "http://apilearningpayment.totopeto.com/transactions?member_id=", tenant_name="";
     String user_id, user_email;
     ArrayList<HashMap<String, String>> transactionsList;
     ArrayList<HashMap<String, String>> membersList;
@@ -155,8 +155,6 @@ public class Member2Tab extends Activity {
                     // looping through All transactions
                     for (int i = 0; i < transactions.length(); i++) {
                         JSONObject c = transactions.getJSONObject(i);
-                        
-                        String member_id = c.getString("member_id");
                         String tenant_id = c.getString("tenant_id");
                         String amount = c.getString("amount");
                         
@@ -164,8 +162,19 @@ public class Member2Tab extends Activity {
                         HashMap<String, String> transaction = new HashMap<String, String>();
  
                         // adding each child node to HashMap key => value
-                        transaction.put("member_id", member_id);
-                        transaction.put("tenant_id", tenant_id);
+                        // adding member name for each transactions
+                        String jsonStr2 = sh.makeServiceCall("http://apilearningpayment.totopeto.com/tenants/");
+                        JSONObject jsonObj2 = new JSONObject(jsonStr2);
+                        JSONArray account = jsonObj2.getJSONArray("tenants");
+                        for (int index = 0; index < account.length(); index++) 
+                        {
+                            JSONObject t = account.getJSONObject(index);
+                            if(t.getString("id").contentEquals(tenant_id))
+                            {
+                            		tenant_name = t.getString("name");
+                            }
+                        }
+                        transaction.put("tenant_name", "Purchased by:" + tenant_name);
                         transaction.put("amount", amount);
                         
                         // adding transaction to transaction list

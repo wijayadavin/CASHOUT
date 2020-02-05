@@ -42,5 +42,6 @@
     <string name="add_tenant">Add new Tenant account</string>
     <string name="add_member">Add new Member account</string>
     <string name="add_admin">Add new Admin account</string>
+    <string name="title_tenant">TENANT ACCOUNT</string>
 
 </resources>

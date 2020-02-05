@@ -24,7 +24,8 @@ public class ProfilActivity extends Activity {
 	private static String url_topup = "http://apilearningpayment.totopeto.com/transactions/top_up";
 	private String TAG = ProfilActivity.class.getSimpleName();
     private ProgressDialog pDialog, pDialog2;
-	TextView accountType, namaProfil, phoneProfil, emailProfil, saldoTextView, saldoProfil, idEdit;
+	TextView accountType, namaProfil, phoneProfil, emailProfil, 
+	saldoTextView, saldoProfil, idEdit, accountTextView, phoneTextView;
 	EditText topupEdit;
 	Intent oldIntent, iEdit;
 	Button buttonBack, topupButton, historiTopupButton;
@@ -39,8 +40,10 @@ public class ProfilActivity extends Activity {
 		setContentView(R.layout.activity_profil);
 		user_email = oldIntent.getStringExtra("user_email");
 		//find R.ID profile data
+		accountTextView = (TextView) findViewById(R.id.textView2);
 		accountType = (TextView) findViewById(R.id.textView_accountType);
 		namaProfil = (TextView) findViewById(R.id.profil_nama);
+		phoneTextView = (TextView) findViewById(R.id.textView_phone);
 		phoneProfil = (TextView) findViewById(R.id.profil_phone);
 		emailProfil = (TextView) findViewById(R.id.profil_email);
 		saldoTextView = (TextView) findViewById(R.id.textView_saldo);
@@ -60,8 +63,8 @@ public class ProfilActivity extends Activity {
 			}
 		});
 		
-		
-		
+		accountTextView.setVisibility(View.INVISIBLE);
+		accountType.setVisibility(View.INVISIBLE);
 		//setText profile data khusus account non-admin
 		if(account_type.equals("members")) 
 		{
@@ -73,36 +76,42 @@ public class ProfilActivity extends Activity {
 		if(account_type.equals("administrators")) 
 		{
 			//topup features
-			historiTopupButton.setVisibility(View.GONE);
-			topupButton.setVisibility(View.GONE);
-			topupEdit.setVisibility(View.GONE);
+			historiTopupButton.setVisibility(View.INVISIBLE);
+			topupButton.setVisibility(View.INVISIBLE);
+			topupEdit.setVisibility(View.INVISIBLE);
 			//phone data
-			phoneProfil.setVisibility(View.GONE);
+			phoneTextView.setVisibility(View.INVISIBLE);
+			phoneProfil.setVisibility(View.INVISIBLE);
 			//saldo data
-			saldoTextView.setVisibility(View.GONE);
-			saldoProfil.setVisibility(View.GONE);
+			saldoTextView.setVisibility(View.INVISIBLE);
+			saldoProfil.setVisibility(View.INVISIBLE);
 		}
 		//template khusus account tenants req by admin TA
 		else if(account_type.equals("tenants")) 
 		{
 			//topup features
-			topupButton.setVisibility(View.GONE);
-			topupEdit.setVisibility(View.GONE);
-			historiTopupButton.setVisibility(View.GONE);
+			topupButton.setVisibility(View.INVISIBLE);
+			topupEdit.setVisibility(View.INVISIBLE);
+			historiTopupButton.setVisibility(View.INVISIBLE);
 			//phone data
-			phoneProfil.setVisibility(View.GONE);
+			phoneTextView.setVisibility(View.INVISIBLE);
+			phoneProfil.setVisibility(View.INVISIBLE);
 			//saldo data
-			saldoTextView.setVisibility(View.GONE);
-			saldoProfil.setVisibility(View.GONE);
+			saldoTextView.setVisibility(View.INVISIBLE);
+			saldoProfil.setVisibility(View.INVISIBLE);
+			//back button
+			if(oldIntent.getStringExtra("request_from").equals("members")) {
+			buttonBack.setVisibility(View.INVISIBLE);
+			}
 		}
 
 		//template khusus account members req by member MM
 		else if(oldIntent.getStringExtra("request_from").equals("members") 
 		&& account_type.equals("members")) 
 		{
-			buttonBack.setVisibility(View.GONE);
-			topupButton.setVisibility(View.GONE);
-			topupEdit.setVisibility(View.GONE);
+			buttonBack.setVisibility(View.INVISIBLE);
+			topupButton.setVisibility(View.INVISIBLE);
+			topupEdit.setVisibility(View.INVISIBLE);
 		}
 		//template khusus account members req by admin MA
 		else{
@@ -248,7 +257,7 @@ public class ProfilActivity extends Activity {
     		namaProfil.setText(user_name);
     		emailProfil.setText(user_email);
     		phoneProfil.setText(user_phone_number);
-    		saldoProfil.setText(user_amount);
+    		saldoProfil.setText("  "+user_amount);
         }
 	}
     @Override

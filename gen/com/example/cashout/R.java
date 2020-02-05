@@ -130,6 +130,7 @@ public final class R {
         public static final int title_payment=0x7f05001d;
         public static final int title_profil=0x7f050011;
         public static final int title_tab_tenant=0x7f050024;
+        public static final int title_tenant=0x7f050029;
         public static final int title_tenants=0x7f05001c;
         public static final int title_tenants_list=0x7f050022;
     }

@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/textView_accountType"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
@@ -67,7 +67,7 @@
 
     <TextView
         android:id="@+id/profil_nama"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView_email"
         android:layout_toRightOf="@+id/textView_email"
@@ -76,7 +76,7 @@
 
     <TextView
         android:id="@+id/profil_email"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView_phone"
         android:layout_alignLeft="@+id/profil_nama"
@@ -85,7 +85,7 @@
 
     <TextView
         android:id="@+id/profil_saldo"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView_saldo"
         android:layout_alignBottom="@+id/textView_saldo"
@@ -100,8 +100,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView_saldo"
-        android:text="@string/button_edit" 
-        android:onClick="callEdit"/>
+        android:onClick="callEdit"
+        android:text="@string/button_edit" />
 
     <Button
         android:id="@+id/button_historitopup"
@@ -110,8 +110,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button_histori"
-        android:text="@string/button_historiTopup" 
-        android:onClick="callTopupHistory"/>
+        android:onClick="callTopupHistory"
+        android:text="@string/button_historiTopup" />
 
     <TextView
         android:id="@+id/profil_phone"
@@ -148,12 +148,12 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
         android:layout_alignBottom="@+id/button2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/profil_phone"
+        android:layout_toRightOf="@+id/textView2"
         android:gravity="center|left"
         android:text="@string/title_profil"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp" />
 
 </RelativeLayout>
