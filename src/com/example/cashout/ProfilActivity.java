@@ -100,7 +100,7 @@ public class ProfilActivity extends Activity {
 			saldoTextView.setVisibility(View.INVISIBLE);
 			saldoProfil.setVisibility(View.INVISIBLE);
 			//back button
-			if(oldIntent.getStringExtra("request_from").equals("members")) {
+			if(oldIntent.getStringExtra("request_from").equals("administrators")) { 
 			buttonBack.setVisibility(View.INVISIBLE);
 			}
 		}
@@ -257,7 +257,7 @@ public class ProfilActivity extends Activity {
     		namaProfil.setText(user_name);
     		emailProfil.setText(user_email);
     		phoneProfil.setText(user_phone_number);
-    		saldoProfil.setText("  "+user_amount);
+    		saldoProfil.setText("  " + user_amount);
         }
 	}
     @Override

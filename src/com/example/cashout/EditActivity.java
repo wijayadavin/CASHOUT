@@ -86,7 +86,9 @@ private class Edit extends AsyncTask<Void, Void, Void> {
         try {
         	params.put("name", ename.getText().toString());
         	params.put("email", eemail.getText().toString());
+        	if(accountType.getText().toString().equals("members")) {
         	params.put("phone_number", ephone.getText().toString());
+    		}
         	put_params = params.toString();
         	
         } catch (JSONException e) {
