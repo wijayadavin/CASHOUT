@@ -208,6 +208,10 @@ public class ProfilActivity extends Activity {
                         			user_phone_number = m.getString("phone_number");
                         			user_amount = m.getString("current_balance");
                         		}      		
+                        		if(account_type.equals("tenants")) 
+                        		{
+                        			user_phone_number = m.getString("number");
+                        		}      		
                         }
                     } }
                     catch (final JSONException e) 
