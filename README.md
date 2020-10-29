@@ -6,7 +6,7 @@ THis app let you login as user/tenant/admin and do simple transactions.
 #### API:
 apilearningpayment.totopeto.com
 
-### LOGIN AS ADMIN:
+### LOGIN AS AN ADMIN:
 
 #### Tab Listview:
 
@@ -32,7 +32,7 @@ apilearningpayment.totopeto.com
     - Save new member top up transaction
     - Get member top up transactions
 
-### LOGIN AS MEMBER:
+### LOGIN AS A MEMBER:
 
 #### Tenants List:
 
