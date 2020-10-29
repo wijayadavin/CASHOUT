@@ -1,4 +1,4 @@
-# CASHOUT ANDROID APP
+# Stores Mobile Android App with Java
 #### A simple stores app for practicing purpose
 This super simple app was developed with Java.
 THis app let you login as user/tenant/admin and do simple transactions.
