@@ -1,6 +1,7 @@
 # CASHOUT ANDROID APP
 #### A simple stores app for practicing purpose
-This super simple app that developed with Java let you login as user/tenant/admin
+This super simple app was developed with Java.
+THis app let you login as user/tenant/admin and do simple transactions.
 
 #### API:
 apilearningpayment.totopeto.com
